@@ -17,7 +17,7 @@ void Activity::setName() {
 }
 
 void Activity::setDescription() {
-    std::cout << "Inserisci la descrizione della nuova attività" << std::endl;
+    std::cout << "Inserisci una descrizione per la nuova attività" << std::endl;
     std::string chosen_description;
     std::cin >> chosen_description;
     this->description = chosen_description;

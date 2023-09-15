@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(ToDoList main.cpp
         Activity.cpp
         Activity.h
-        ActivityList.cpp
-        ActivityList.h)
+        Category.cpp
+        Category.h)
