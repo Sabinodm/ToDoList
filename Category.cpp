@@ -26,18 +26,29 @@ void Category::addActivity() {
 }
 
 void Category::removeActivity() {
-    std::cout << "Inserisci il nome dell'attività da rimuovere" << std::endl;
+    std::cout << "Inserisci il numero dell'attività da rimuovere" << std::endl;
     std::cout << "Elemento numero:";
     int index_element;
+    std::cin.exceptions(std::ios_base::failbit);
     std::cin >> index_element;
-    category.erase(category.begin() + index_element);
+    if (index_element >= category.size() || index_element < 0) {
+        throw std::out_of_range("Indice non valido");
+    }
+    else {
+        category.erase(category.begin() + index_element);
+    }
 }
 
 void Category::printList() {
     std::cout << "Categoria: " << category_name << std::endl;
-    for (int i = 0; i < category.size(); i++) {
-        std::cout << i << " ― ― " << std::endl;
-        category[i].Activity::printActivity();
+    if (category.empty()) {
+        throw std::out_of_range("La categoria è vuota");
+    }
+    else {
+        for (int i = 0; i < category.size(); i++) {
+            std::cout << i << " ― ― " << std::endl;
+            category[i].Activity::printActivity();
+        }
     }
 }
 
