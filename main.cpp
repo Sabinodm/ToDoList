@@ -67,7 +67,6 @@ int main() {
                 try {
                     int category_number = listSelector(indexOfCategory);
                     indexOfCategory[category_number].addActivity();
-                    //TODO exception per time
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
                 }catch (std::ios_base::failure &fail) {
@@ -142,5 +141,8 @@ int main() {
                 std::cout << "operazione non valida" << std::endl;
                 break;
         }
+
+        std::cout << std::endl;
+
     } while (a != 0);
 }

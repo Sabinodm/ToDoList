@@ -7,4 +7,8 @@ add_executable(ToDoList main.cpp
         Activity.cpp
         Activity.h
         Category.cpp
-        Category.h)
+        Category.h
+        TimeDate.cpp
+        TimeDate.h
+        TimeDateException.cpp
+        TimeDateException.h)

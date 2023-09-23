@@ -22,6 +22,7 @@ void Category::addActivity() {
     Activity newActivity = Activity();
     newActivity.Activity::setName();
     newActivity.Activity::setDescription();
+    newActivity.Activity::setDate();
     category.push_back(newActivity);
 }
 
