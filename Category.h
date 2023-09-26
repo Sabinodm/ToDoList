@@ -18,9 +18,12 @@ public:
     void removeActivity();
     void printList();
     void clearList();
+    void writeCat();
+    void saveCat(std::string name,std::string description,int day,int month, int year, bool YesNOdata, Category &newCategory);
+
 
 private:
-    std::string category_name;
+    std::string categoryName;
     std::vector<Activity> category;
 };
 

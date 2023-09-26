@@ -5,8 +5,9 @@
 #include <iostream>
 #include <limits>
 #include "Activity.h"
+#include "TxtFile.h"
 
-Activity::Activity() : name("no  name"), description("no description") {
+Activity::Activity() : name("no  name"), description("no description"), YesNOdata(false) {
 
 }
 
@@ -79,4 +80,15 @@ void Activity::printActivity() {
     else {
         std::cout << "Data di scadenza: " << date.getDate() << std::endl;
     }
+}
+
+void Activity::writeAct() {
+    writeActivity(name, description, date, YesNOdata);
+}
+
+void Activity::readAct(std::string readName,std::string readDescription,int readDay,int readMonth, int readYear, bool readYesNOdata) {
+    this->name = readName;
+    this->description = readDescription;
+    this->date.setDate(readDay, readMonth, readYear);
+    this->YesNOdata = readYesNOdata;
 }

@@ -4,18 +4,19 @@
 #include "iostream"
 #include "Category.h"
 #include "Activity.h"
+#include "TxtFile.h"
 
-Category::Category(std::string name) : category_name(name) {
+Category::Category(std::string name) : categoryName(name) {
 
 }
 
 const std::string & Category::setName(std::string & chosen_name) {
-    this->category_name = chosen_name;
-    return category_name;
+    this->categoryName = chosen_name;
+    return categoryName;
 }
 
 const std::string & Category::getName() {
-    return category_name;
+    return categoryName;
 }
 
 void Category::addActivity() {
@@ -41,7 +42,7 @@ void Category::removeActivity() {
 }
 
 void Category::printList() {
-    std::cout << "Categoria: " << category_name << std::endl;
+    std::cout << "Categoria: " << categoryName << std::endl;
     if (category.empty()) {
         throw std::out_of_range("La categoria è vuota");
     }
@@ -55,4 +56,17 @@ void Category::printList() {
 
 void Category::clearList() {
     category.clear();
+}
+
+void Category::writeCat() {
+    writeCategory(categoryName);
+    for (int i = 0; i < category.size(); i++) {
+        category[i].writeAct();
+    }
+}
+
+void Category::saveCat(std::string name,std::string description,int day,int month, int year, bool YesNOdata, Category &newCategory) {
+    Activity newActivity = Activity();
+    newActivity.readAct(name,description,day,month,year,YesNOdata);
+    newCategory.category.push_back(newActivity);
 }

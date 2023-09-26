@@ -11,4 +11,6 @@ add_executable(ToDoList main.cpp
         TimeDate.cpp
         TimeDate.h
         TimeDateException.cpp
-        TimeDateException.h)
+        TimeDateException.h
+        TxtFile.cpp
+        TxtFile.h)

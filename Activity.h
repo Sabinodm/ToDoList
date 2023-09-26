@@ -16,6 +16,8 @@ public:
     void setDescription();
     void setDate();
     void printActivity();
+    void writeAct();
+    void readAct(std::string readName,std::string readDescription,int readDay,int readMonth, int readYear, bool readYesNOdata);
 
 private:
     std::string name;

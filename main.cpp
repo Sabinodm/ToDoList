@@ -2,6 +2,7 @@
 #include <vector>
 #include <limits>
 #include "Category.h"
+#include "TxtFile.h"
 
 int listSelector(std::vector<Category> &index) {
     int category_number;
@@ -30,9 +31,16 @@ int listSelector(std::vector<Category> &index) {
 int main() {
     std::vector<Category> indexOfCategory;
     int a;
+    try {
+        checkFile("file.txt", indexOfCategory);
+    }catch (TimeDateException &ex) {
+        std::cout << "Errore nella lettura del file"  << std::endl;
+        std::cout << std::endl;
+    }
+
     do {
         std::cout << "Scegli l'operazione dall'elenco " << std::endl;
-        std::cout << "0-- Esci dal programma " << std::endl;
+        std::cout << "0-- Salva ed esci dal programma " << std::endl;
         std::cout << "1-- Creare una nuova categoria " << std::endl;
         std::cout << "2-- Aggiungere una nuova attività " << std::endl;
         std::cout << "3-- Stampare le attività di una categoria " << std::endl;
@@ -53,6 +61,7 @@ int main() {
 
         switch (a) {
             case 0:
+                saveFile(indexOfCategory);
                 std::cout << "Arrivederci" << std::endl;
             break;
 
@@ -141,8 +150,6 @@ int main() {
                 std::cout << "operazione non valida" << std::endl;
                 break;
         }
-
         std::cout << std::endl;
-
     } while (a != 0);
 }
