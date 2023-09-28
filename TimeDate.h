@@ -13,10 +13,10 @@
 class Date
 {
 private:
-    std::tm date;
+    std::tm date{};
     void clear();
-    void check_date(int day, int month, int year);
-    bool is_leap(int year);
+    void checkDate(int day, int month, int year);
+    bool isLeap(int year);
 public:
     Date();
     ~Date();

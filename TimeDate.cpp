@@ -15,7 +15,7 @@ void Date::setDate(int day, int month, int year)
 {
     try
     {
-        check_date(day, month, year);
+        checkDate(day, month, year);
         clear();
         this->date.tm_mday = day;
         this->date.tm_mon = month-1;
@@ -60,7 +60,7 @@ void Date::clear()
     this->date.tm_year = 0;
 }
 
-bool Date::is_leap(int year)
+bool Date::isLeap(int year)
 {
     if( ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0) )
         return true;
@@ -68,41 +68,41 @@ bool Date::is_leap(int year)
         return false;
 }
 
-void Date::check_date(int day, int month, int year)
+void Date::checkDate(int day, int month, int year)
 {
     // Controlli base
 
     if(day < 1)
-        throw TimeDateException("Day can't be < 1", TimeDateException::INVALID_FORMAT);
+        throw TimeDateException("Il giorno non può essere < 1", TimeDateException::INVALID_FORMAT);
     else if (day > 31)
-        throw TimeDateException("Day can't be > 31", TimeDateException::INVALID_FORMAT);
+        throw TimeDateException("Il giorno non può essere > 31", TimeDateException::INVALID_FORMAT);
 
     if(month < 1)
-        throw TimeDateException("Month can't be < 1", TimeDateException::INVALID_FORMAT);
+        throw TimeDateException("Il mese non può essere < 1", TimeDateException::INVALID_FORMAT);
     else if(month > 12)
-        throw TimeDateException("Month can't be > 12", TimeDateException::INVALID_FORMAT);
+        throw TimeDateException("Il mese non può essere > 12", TimeDateException::INVALID_FORMAT);
 
     if(year < 1900)
-        throw TimeDateException("Year can't be < 1900", TimeDateException::INVALID_FORMAT);
+        throw TimeDateException("L'anno non può essere < 1900", TimeDateException::INVALID_FORMAT);
 
     // Controlli coerenza <day, month> e year
 
     if( (month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
     {
         std::ostringstream ss;
-        ss << "<day, month> = <" << day << ", " << month << "> is not valid. Day must be in [1,30]";
+        ss << "<giorno, mese> = <" << day << ", " << month << "> non è valido. Il giorno deve essere tra [1,30]";
         throw TimeDateException(ss.str(), TimeDateException::INVALID_FORMAT );
     }
-    else if( month == 2 && is_leap(year) && day > 29)
+    else if( month == 2 && isLeap(year) && day > 29)
     {
         std::ostringstream ss;
-        ss << "<day, month> = <" << day << ", " << month << "> (leap) is not valid. Day must be in [1,29]";
+        ss << "<giorno, mese> = <" << day << ", " << month << "> (bisestile) non è valido. Il giorno deve essere tra [1,29]";
         throw TimeDateException(ss.str(), TimeDateException::INVALID_FORMAT );
     }
-    else if( month == 2 && !is_leap(year) && day > 28)
+    else if( month == 2 && !isLeap(year) && day > 28)
     {
         std::ostringstream ss;
-        ss << "<day, month> = <" << day << ", " << month << "> (not leap) is not valid. Day must be in [1,28]";
+        ss << "<giorno, mese> = <" << day << ", " << month << "> (non bisestile) non è valido. Il giorno deve essere tra [1,28]";
         throw TimeDateException(ss.str(), TimeDateException::INVALID_FORMAT );
     }
 }

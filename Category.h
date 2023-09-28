@@ -10,16 +10,16 @@
 
 class Category {
 public:
-    explicit Category(std::string name);
+    explicit Category(const std::string &name);
     ~Category() = default;
-    const std::string & setName(std::string & chosen_name);
+    const std::string & setName(const std::string & chosenName);
     const  std::string & getName();
     void addActivity();
     void removeActivity();
     void printList();
     void clearList();
-    void writeCat();
-    void saveCat(std::string name,std::string description,int day,int month, int year, bool YesNOdata, Category &newCategory);
+    void collectCategory();
+    void readCategory(const std::string &name, const std::string &description, int day, int month, int year, bool yesNOdate, Category &newCategory);
 
 
 private:

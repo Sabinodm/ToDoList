@@ -13,16 +13,16 @@ Activity::Activity() : name("no  name"), description("no description"), YesNOdat
 
 void Activity::setName() {
     std::cout << "Inserisci il nome della nuova attività" << std::endl;
-    std::string chosen_name;
-    std::cin >> chosen_name;
-    this->name = chosen_name;
+    std::string chosenName;
+    std::cin >> chosenName;
+    this->name = chosenName;
 }
 
 void Activity::setDescription() {
     std::cout << "Inserisci una descrizione per la nuova attività" << std::endl;
-    std::string chosen_description;
-    std::cin >> chosen_description;
-    this->description = chosen_description;
+    std::string chosenDescription;
+    std::cin >> chosenDescription;
+    this->description = chosenDescription;
 }
 
 void Activity::setDate() {
@@ -35,25 +35,25 @@ void Activity::setDate() {
         for (bool d = false; !d;) {
             std::cout << "Giorno: ";
             try {
-            int chosen_day;
+            int chosenDay;
             std::cin.exceptions(std::ios_base::failbit);
-            std::cin >> chosen_day;
+            std::cin >> chosenDay;
 
             std::cout << "Mese: ";
-            int chosen_month;
+            int chosenMonth;
             std::cin.exceptions(std::ios_base::failbit);
-            std::cin >> chosen_month;
+            std::cin >> chosenMonth;
 
             std::cout << "Anno: ";
-            int chosen_year;
+            int chosenYear;
             std::cin.exceptions(std::ios_base::failbit);
-            std::cin >> chosen_year;
+            std::cin >> chosenYear;
 
-            date.setDate(chosen_day, chosen_month, chosen_year);
+            date.setDate(chosenDay, chosenMonth, chosenYear);
             d = true;
 
             }catch (TimeDateException &ex) {
-                std::cout << "[" << ex.code() << "] " << ex.what() << std::endl;
+                std::cout  << ex.what() << std::endl;
             }catch (std::ios_base::failure &fail) {
                 std::cout << "Valore inserito non valido" << std::endl;
                 std::cin.clear();
@@ -82,13 +82,13 @@ void Activity::printActivity() {
     }
 }
 
-void Activity::writeAct() {
+void Activity::collectActivity() {
     writeActivity(name, description, date, YesNOdata);
 }
 
-void Activity::readAct(std::string readName,std::string readDescription,int readDay,int readMonth, int readYear, bool readYesNOdata) {
+void Activity::readActivity(const std::string &readName, const std::string &readDescription, int readDay, int readMonth, int readYear, bool readYesNOdate) {
     this->name = readName;
     this->description = readDescription;
     this->date.setDate(readDay, readMonth, readYear);
-    this->YesNOdata = readYesNOdata;
+    this->YesNOdata = readYesNOdate;
 }

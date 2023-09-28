@@ -32,12 +32,12 @@ void checkFile(const std::string &file, std::vector<Category> &index) {
     }
 }
 
-void writeActivity(const std::string& name, const std::string& description, const Date& date, bool YesNOdata) {
+void writeActivity(const std::string& name, const std::string& description, const Date& date, bool YesNOdate) {
     std::ofstream fout("file.txt", std::ios_base::app);
     fout << name << std::endl;
     fout << description << std::endl;
     fout << date.getDay() << std::endl << date.getMonth() << std::endl << date.getYear() << std::endl;
-    fout << YesNOdata << std::endl;
+    fout << YesNOdate << std::endl;
     fout.close();
 }
 
@@ -74,7 +74,7 @@ void readFile(std::ifstream &fin, std::vector<Category> &index) {
           int day;
           int month;
           int year;
-          bool YesNOdata;
+          bool YesNOdate;
           std::getline(fin, name);
           if (readLabel(name)) {
               result = true;
@@ -87,8 +87,8 @@ void readFile(std::ifstream &fin, std::vector<Category> &index) {
               fin >> day;
               fin >> month;
               fin >> year;
-              fin >> YesNOdata;
-              newCategory.saveCat(name, description, day, month, year, YesNOdata, newCategory);
+              fin >> YesNOdate;
+              newCategory.readCategory(name, description, day, month, year, YesNOdate, newCategory);
               std::getline(fin, waste);
               result = false;
           }
@@ -103,7 +103,7 @@ void saveFile(std::vector<Category> &index) {
     fout.close();
     for (int i = 0; i < index.size(); i++) {
         writeLabel();
-         index[i].writeCat();
+        index[i].collectCategory();
     }
     std::cout << "File salvato" << std::endl;
 }

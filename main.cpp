@@ -5,7 +5,7 @@
 #include "TxtFile.h"
 
 int listSelector(std::vector<Category> &index) {
-    int category_number;
+    int categoryNumber;
     std::cout << "Scegli la categoria dall'elenco:" << std::endl;
     for (int i = 0; i < index.size(); i++) {
         std::cout << i << " ― ― ";
@@ -18,13 +18,13 @@ int listSelector(std::vector<Category> &index) {
     else {
         std::cout << "Categoria numero:";
         std::cin.exceptions(std::ios_base::failbit);
-        std::cin >> category_number;
+        std::cin >> categoryNumber;
     }
 
-    if (category_number >= index.size() || category_number < 0) {
+    if (categoryNumber >= index.size() || categoryNumber < 0) {
         throw std::out_of_range("Categoria non esistente");
     } else {
-        return category_number;
+        return categoryNumber;
     }
 }
 
@@ -57,7 +57,7 @@ int main() {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             a = -1; //case default
         }
-        std::string category_name;
+        std::string categoryName;
 
         switch (a) {
             case 0:
@@ -67,15 +67,15 @@ int main() {
 
             case 1 :  //creazione categoria
                 std::cout << "Inserisci nome nuova categoria" << std::endl;
-                std::cin >> category_name;
-                indexOfCategory.push_back(Category(category_name));
-                indexOfCategory[indexOfCategory.size() - 1].setName(category_name);
+                std::cin >> categoryName;
+                indexOfCategory.push_back(Category(categoryName));
+                indexOfCategory[indexOfCategory.size() - 1].setName(categoryName);
             break;
 
             case 2: //aggiunta attività
                 try {
-                    int category_number = listSelector(indexOfCategory);
-                    indexOfCategory[category_number].addActivity();
+                    int categoryNumber = listSelector(indexOfCategory);
+                    indexOfCategory[categoryNumber].addActivity();
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
                 }catch (std::ios_base::failure &fail) {
@@ -87,8 +87,8 @@ int main() {
 
             case 3: //stampa categoria
                 try {
-                    int category_number = listSelector(indexOfCategory);
-                    indexOfCategory[category_number].printList();
+                    int categoryNumber = listSelector(indexOfCategory);
+                    indexOfCategory[categoryNumber].printList();
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
                 }catch (std::ios_base::failure &fail) {
@@ -100,9 +100,9 @@ int main() {
 
             case 4: //rimozione attività da una categoria
                 try {
-                    int category_number = listSelector(indexOfCategory);
-                    indexOfCategory[category_number].printList();
-                    indexOfCategory[category_number].removeActivity();
+                    int categoryNumber = listSelector(indexOfCategory);
+                    indexOfCategory[categoryNumber].printList();
+                    indexOfCategory[categoryNumber].removeActivity();
                     std::cout << "Attività rimossa" << std::endl;
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
@@ -115,8 +115,8 @@ int main() {
 
             case 5: //svuotamento categoria
                 try {
-                    int category_number = listSelector(indexOfCategory);
-                    indexOfCategory[category_number].clearList();
+                    int categoryNumber = listSelector(indexOfCategory);
+                    indexOfCategory[categoryNumber].clearList();
                     std::cout << "Categoria svuotata" << std::endl;
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
@@ -129,8 +129,8 @@ int main() {
 
             case 6: //eliminazione categoria
                 try {
-                    int category_number = listSelector(indexOfCategory);
-                    indexOfCategory.erase(indexOfCategory.begin() + category_number);
+                    int categoryNumber = listSelector(indexOfCategory);
+                    indexOfCategory.erase(indexOfCategory.begin() + categoryNumber);
                     std::cout << "Categoria eliminata" << std::endl;
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
