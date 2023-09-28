@@ -10,7 +10,7 @@
 
 class Category {
 public:
-    explicit Category(const std::string &name);
+    explicit Category(std::string &name);
     ~Category() = default;
     const std::string & setName(const std::string & chosenName);
     const  std::string & getName();

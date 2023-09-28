@@ -23,7 +23,7 @@ public:
         INVALID_FORMAT // formato della data non valido
     };
 
-    TimeDateException(const std::string& err_msg, int err_code = 0);
+    explicit TimeDateException(const std::string& err_msg, int err_code = 0);
     int code();
 };
 

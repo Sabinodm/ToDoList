@@ -6,7 +6,7 @@
 #include "Activity.h"
 #include "TxtFile.h"
 
-Category::Category(const std::string &name) : categoryName(name) {
+Category::Category(std::string &name) : categoryName(name) {
 
 }
 
