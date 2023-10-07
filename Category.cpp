@@ -70,3 +70,45 @@ void Category::readCategory(const std::string &name, const std::string &descript
     newActivity.readActivity(name, description, day, month, year, yesNOdate);
     newCategory.category.push_back(newActivity);
 }
+
+//test
+
+size_t Category::getSizes() {
+    return  category.size();
+}
+
+std::string Category::getActivityName(int indexElement) {
+    return category[indexElement].Activity::getName();
+}
+
+std::string Category::getActivityDescription(int indexElement) {
+    return category[indexElement].Activity::getDescription();
+}
+
+Date Category::getActivityDate(int indexElement) {
+    return category[indexElement].Activity::getDate();
+}
+
+bool Category::getActivityYesNOdata(int indexElement) {
+    return category[indexElement].Activity::getYesNOdata();
+}
+
+//overload per test
+
+void Category::addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata) {
+    Activity newActivity = Activity();
+    newActivity.Activity::setName(chosenName);
+    newActivity.Activity::setDescription(chosenDescription);
+    newActivity.Activity::setDate(chosenDay, chosenMonth, chosenYear);
+    newActivity.Activity::setYesNOdata(chosenYesNOdata);
+    category.push_back(newActivity);
+}
+
+void Category::removeActivity(int indexElement) {
+    if (indexElement >= category.size() || indexElement < 0) {
+        throw std::out_of_range("Indice non valido");
+    }
+    else {
+        category.erase(category.begin() + indexElement);
+    }
+}

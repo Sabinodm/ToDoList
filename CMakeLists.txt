@@ -3,14 +3,9 @@ project(ToDoList)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(ToDoList main.cpp
-        Activity.cpp
-        Activity.h
-        Category.cpp
-        Category.h
-        TimeDate.cpp
-        TimeDate.h
-        TimeDateException.cpp
-        TimeDateException.h
-        TxtFile.cpp
-        TxtFile.h)
+add_subdirectory(test)
+
+set(SOURCE_FILE Activity.cpp Activity.h Category.cpp Category.h TimeDate.cpp TimeDate.h TimeDateException.cpp TimeDateException.h TxtFile.cpp TxtFile.h)
+add_executable(ToDoList main.cpp)
+add_library(core ${SOURCE_FILE})
+target_link_libraries(ToDoList core)

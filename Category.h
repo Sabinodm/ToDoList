@@ -21,6 +21,16 @@ public:
     void collectCategory();
     void readCategory(const std::string &name, const std::string &description, int day, int month, int year, bool yesNOdate, Category &newCategory);
 
+    //test
+    size_t getSizes();
+    std::string getActivityName(int indexElement);
+    std::string getActivityDescription(int indexElement);
+    Date getActivityDate(int indexElement);
+    bool getActivityYesNOdata(int indexElement);
+
+    //overload per test
+    void addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata);
+    void removeActivity(int indexElement);
 
 private:
     std::string categoryName;

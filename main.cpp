@@ -61,7 +61,7 @@ int main() {
 
         switch (a) {
             case 0:
-                saveFile(indexOfCategory);
+                saveFile(indexOfCategory, "file.txt");
                 std::cout << "Arrivederci" << std::endl;
             break;
 

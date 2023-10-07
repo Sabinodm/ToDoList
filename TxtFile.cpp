@@ -97,8 +97,8 @@ void readFile(std::ifstream &fin, std::vector<Category> &index) {
     }
 }
 
-void saveFile(std::vector<Category> &index) {
-    std::ofstream fout("file.txt");
+void saveFile(std::vector<Category> &index, const std::string& fileName) {
+    std::ofstream fout(fileName);
     fout << "Il file è in caricamento" << std::endl;
     fout.close();
     for (int i = 0; i < index.size(); i++) {

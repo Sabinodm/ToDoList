@@ -92,3 +92,39 @@ void Activity::readActivity(const std::string &readName, const std::string &read
     this->date.setDate(readDay, readMonth, readYear);
     this->YesNOdata = readYesNOdate;
 }
+
+
+//test
+std::string Activity::getName() {
+    return name;
+}
+
+std::string Activity::getDescription() {
+    return description;
+}
+
+Date Activity::getDate() {
+    return date;
+}
+
+bool Activity::getYesNOdata() const {
+    return YesNOdata;
+}
+
+void Activity::setDate(int chosenDay, int chosenMonth, int chosenYear) {
+    this->date.setDate(chosenDay, chosenMonth, chosenYear);
+}
+
+
+//overload per test
+void  Activity::setName(const std::string &chosenName) {
+    this->name = chosenName;
+}
+
+void Activity::setDescription(const std::string &chosenDescription) {
+    this->description = chosenDescription;
+}
+
+void Activity::setYesNOdata(bool chosenYesNOdata) {
+    this->YesNOdata = chosenYesNOdata;
+}
