@@ -37,8 +37,10 @@ int activitySetDayInterface(){
             return chosenDay;
         }catch (std::ios_base::failure &fail) {
             std::cout << "Valore inserito non valido" << std::endl;
+            std::cout << "È stato inserito il giorno di default '1'" << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            return 1;
         }
     }
 
@@ -51,12 +53,14 @@ int activitySetMonthInterface(){
         return chosenMonth;
     }catch (std::ios_base::failure &fail) {
         std::cout << "Valore inserito non valido" << std::endl;
+        std::cout << "È stato inserito il mese di default '1'" << std::endl;
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return 1;
     }
 }
 
-int activitySetYearInterface(){
+int activitySetYearInterface() {
     try {
         std::cout << "Anno: ";
         int chosenYear;
@@ -65,7 +69,9 @@ int activitySetYearInterface(){
         return chosenYear;
     }catch (std::ios_base::failure &fail) {
         std::cout << "Valore inserito non valido" << std::endl;
+        std::cout << "È stato inserito l'anno di default '1990'" << std::endl;
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return 1990;
     }
 }

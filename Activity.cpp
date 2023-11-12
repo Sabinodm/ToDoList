@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <limits>
 #include "Activity.h"
 #include "TxtFile.h"
 
@@ -32,7 +31,7 @@ void Activity::setYesNOdata(bool chosenYesNOdata) {
     this->YesNOdata = chosenYesNOdata;
 }
 
-void Activity::printActivity() {
+void Activity::printActivity() const{
     std::cout << "Attività: " << name << std::endl;
     std::cout << "Descrizione: " << description << std::endl;
     if (!YesNOdata) {
@@ -43,7 +42,7 @@ void Activity::printActivity() {
     }
 }
 
-void Activity::collectActivity() {
+void Activity::collectActivity() const {
     writeActivity(name, description, date, YesNOdata);
 }
 
@@ -55,15 +54,15 @@ void Activity::readActivity(const std::string &readName, const std::string &read
 }
 
 //test
-std::string Activity::getName() {
+std::string Activity::getName() const {
     return name;
 }
 
-std::string Activity::getDescription() {
+std::string Activity::getDescription() const {
     return description;
 }
 
-Date Activity::getDate() {
+Date Activity::getDate() const {
     return date;
 }
 

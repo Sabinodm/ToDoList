@@ -13,21 +13,21 @@ public:
     explicit Category(std::string &name);
     ~Category() = default;
     const std::string & setName(const std::string & chosenName);
-    const  std::string & getName();
+    const std::string & getName() const;
     void addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata);
     void addActivity(const std::string &chosenName, const std::string &chosenDescription, bool chosenYesNOdata); //overload in caso di attività senza data
     void removeActivity(int indexElement);
-    void printList();
+    void printList() const;
     void clearList();
-    void collectCategory();
+    void collectCategory() const;
     void readCategory(const std::string &name, const std::string &description, int day, int month, int year, bool yesNOdate, Category &newCategory);
 
     //test
-    size_t getSizes();
-    std::string getActivityName(int indexElement);
-    std::string getActivityDescription(int indexElement);
-    Date getActivityDate(int indexElement);
-    bool getActivityYesNOdata(int indexElement);
+    size_t getSizes() const;
+    std::string getActivityName(int indexElement) const;
+    std::string getActivityDescription(int indexElement) const;
+    Date getActivityDate(int indexElement) const;
+    bool getActivityYesNOdata(int indexElement) const;
 
 private:
     std::string categoryName;

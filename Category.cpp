@@ -15,7 +15,7 @@ const std::string & Category::setName(const std::string & chosenName) {
     return categoryName;
 }
 
-const std::string & Category::getName() {
+const std::string & Category::getName() const {
     return categoryName;
 }
 
@@ -45,7 +45,7 @@ void Category::removeActivity(int indexElement) {
     }
 }
 
-void Category::printList() {
+void Category::printList() const{
     std::cout << "Categoria: " << categoryName << std::endl;
     if (category.empty()) {
         throw std::out_of_range("La categoria è vuota");
@@ -62,7 +62,7 @@ void Category::clearList() {
     category.clear();
 }
 
-void Category::collectCategory() {
+void Category::collectCategory() const{
     writeCategory(categoryName);
     for (int i = 0; i < category.size(); i++) {
         category[i].collectActivity();
@@ -77,22 +77,22 @@ void Category::readCategory(const std::string &name, const std::string &descript
 
 //test
 
-size_t Category::getSizes() {
+size_t Category::getSizes() const{
     return  category.size();
 }
 
-std::string Category::getActivityName(int indexElement) {
+std::string Category::getActivityName(int indexElement) const{
     return category[indexElement].Activity::getName();
 }
 
-std::string Category::getActivityDescription(int indexElement) {
+std::string Category::getActivityDescription(int indexElement) const{
     return category[indexElement].Activity::getDescription();
 }
 
-Date Category::getActivityDate(int indexElement) {
+Date Category::getActivityDate(int indexElement) const{
     return category[indexElement].Activity::getDate();
 }
 
-bool Category::getActivityYesNOdata(int indexElement) {
+bool Category::getActivityYesNOdata(int indexElement) const{
     return category[indexElement].Activity::getYesNOdata();
 }
