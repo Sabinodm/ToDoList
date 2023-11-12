@@ -11,64 +11,25 @@ Activity::Activity() : name("no  name"), description("no description"), YesNOdat
 
 }
 
-void Activity::setName() {
-    std::cout << "Inserisci il nome della nuova attività" << std::endl;
-    std::string chosenName;
-    std::cin >> chosenName;
+void Activity::setName(const std::string &chosenName) {
     this->name = chosenName;
 }
 
-void Activity::setDescription() {
-    std::cout << "Inserisci una descrizione per la nuova attività" << std::endl;
-    std::string chosenDescription;
-    std::cin >> chosenDescription;
+void Activity::setDescription(const std::string &chosenDescription) {
     this->description = chosenDescription;
 }
 
-void Activity::setDate() {
-    std::cout << "Vuoi inserire una data di scadenza per la nuova attività? (S/N)" << std::endl;
-    std::string answer;
-    std::cin >> answer;
-    if (answer == "S" || answer == "s") {
-        YesNOdata = true;
-        std::cout << "Inserisci la data di scadenza per la nuova attività" << std::endl;
-        for (bool d = false; !d;) {
-            std::cout << "Giorno: ";
-            try {
-            int chosenDay;
-            std::cin.exceptions(std::ios_base::failbit);
-            std::cin >> chosenDay;
-
-            std::cout << "Mese: ";
-            int chosenMonth;
-            std::cin.exceptions(std::ios_base::failbit);
-            std::cin >> chosenMonth;
-
-            std::cout << "Anno: ";
-            int chosenYear;
-            std::cin.exceptions(std::ios_base::failbit);
-            std::cin >> chosenYear;
-
-            date.setDate(chosenDay, chosenMonth, chosenYear);
-            d = true;
-
-            }catch (TimeDateException &ex) {
-                std::cout  << ex.what() << std::endl;
-            }catch (std::ios_base::failure &fail) {
-                std::cout << "Valore inserito non valido" << std::endl;
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                }
-        }
+void Activity::setDate(int chosenDay, int chosenMonth, int chosenYear) {
+        try {
+            this->date.setDate(chosenDay, chosenMonth, chosenYear);
+        }catch (TimeDateException &ex) {
+            std::cout  << ex.what() << std::endl;
+            std::cout << "È stata inserita la data di default '1/1/1990'" << std::endl;
     }
-    else if (answer == "N" || answer == "n") {
-        YesNOdata = false;
-    }
-    else {
-        std::cout << "Risposta non valida" << std::endl;
-        std::cout << "Nessuna data è stata inserita" << std::endl;
-       YesNOdata = false;
-    }
+}
+
+void Activity::setYesNOdata(bool chosenYesNOdata) {
+    this->YesNOdata = chosenYesNOdata;
 }
 
 void Activity::printActivity() {
@@ -93,7 +54,6 @@ void Activity::readActivity(const std::string &readName, const std::string &read
     this->YesNOdata = readYesNOdate;
 }
 
-
 //test
 std::string Activity::getName() {
     return name;
@@ -109,22 +69,4 @@ Date Activity::getDate() {
 
 bool Activity::getYesNOdata() const {
     return YesNOdata;
-}
-
-void Activity::setDate(int chosenDay, int chosenMonth, int chosenYear) {
-    this->date.setDate(chosenDay, chosenMonth, chosenYear);
-}
-
-
-//overload per test
-void  Activity::setName(const std::string &chosenName) {
-    this->name = chosenName;
-}
-
-void Activity::setDescription(const std::string &chosenDescription) {
-    this->description = chosenDescription;
-}
-
-void Activity::setYesNOdata(bool chosenYesNOdata) {
-    this->YesNOdata = chosenYesNOdata;
 }

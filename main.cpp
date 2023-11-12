@@ -3,6 +3,7 @@
 #include <limits>
 #include "Category.h"
 #include "TxtFile.h"
+#include "UserInterface.h"
 
 int listSelector(std::vector<Category> &index) {
     int categoryNumber;
@@ -75,7 +76,33 @@ int main() {
             case 2: //aggiunta attività
                 try {
                     int categoryNumber = listSelector(indexOfCategory);
-                    indexOfCategory[categoryNumber].addActivity();
+
+                    std::string chosenName = activitySetNameInterface();
+                    std::string chosenDescription = activitySetDescriptionInterface();
+                    std::cout << "Vuoi inserire una data di scadenza per la nuova attività? (S/N)" << std::endl;
+                    std::string dateAnswer;
+                    std::cin >> dateAnswer;
+                    bool YesNOdata;
+                    if (dateAnswer == "S" || dateAnswer == "s") {
+                        std::cout << "Inserisci la data di scadenza per la nuova attività" << std::endl;
+                        int chosenDay = activitySetDayInterface();
+                        int chosenMonth = activitySetMonthInterface();
+                        int chosenYear = activitySetYearInterface();
+                        YesNOdata = true;
+                        indexOfCategory[categoryNumber].addActivity(chosenName, chosenDescription, chosenDay, chosenMonth, chosenYear, YesNOdata);
+                    }
+
+                    else if (dateAnswer == "N" || dateAnswer == "n") {
+                        YesNOdata = false;
+                        indexOfCategory[categoryNumber].addActivity(chosenName, chosenDescription, YesNOdata);
+                    }
+                    else {
+                        std::cout << "Risposta non valida" << std::endl;
+                        std::cout << "Nessuna data è stata inserita" << std::endl;
+                        YesNOdata = false;
+                        indexOfCategory[categoryNumber].addActivity(chosenName, chosenDescription, YesNOdata);
+                    }
+
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
                 }catch (std::ios_base::failure &fail) {
@@ -102,7 +129,10 @@ int main() {
                 try {
                     int categoryNumber = listSelector(indexOfCategory);
                     indexOfCategory[categoryNumber].printList();
-                    indexOfCategory[categoryNumber].removeActivity();
+
+                    int indexElement = removeActivityInterface();
+
+                    indexOfCategory[categoryNumber].removeActivity(indexElement);
                     std::cout << "Attività rimossa" << std::endl;
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
@@ -125,7 +155,7 @@ int main() {
                     std::cin.clear();
                     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
-                break;
+            break;
 
             case 6: //eliminazione categoria
                 try {
@@ -144,11 +174,11 @@ int main() {
             case 7: //eliminazione tutte le categorie
                 indexOfCategory.clear();
                 std::cout << "Tutte le categorie sono state eliminate" << std::endl;
-                break;
+            break;
 
             default:
                 std::cout << "operazione non valida" << std::endl;
-                break;
+            break;
         }
         std::cout << std::endl;
     } while (a != 0);

@@ -11,7 +11,7 @@ protected:
 
     void SetUp() override {
         category.addActivity("bbbb", "cccc", 1, 1, 2000, true);
-        category.addActivity("dddd", "eeee", 1, 1, 1900, false);
+        category.addActivity("dddd", "eeee", false);
     }
 
 

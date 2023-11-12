@@ -12,12 +12,12 @@ protected:
     void SetUp() override {
         std::string aaaa = "aaaa";
         Category aaaaCategory = Category(aaaa);
-        aaaaCategory.addActivity("bbbb", "cccc", 1, 1, 1900, false);
+        aaaaCategory.addActivity("bbbb", "cccc", false);
         aaaaCategory.addActivity("dddd", "eeee", 12, 10, 2009, true);
         testIndex.push_back(aaaaCategory);
         std::string ffff = "ffff";
         Category ffffCategory = Category(ffff);
-        ffffCategory.addActivity("gggg", "hhhh", 1, 1, 1900, false);
+        ffffCategory.addActivity("gggg", "hhhh", false);
         ffffCategory.addActivity("iiii", "llll", 13, 2, 2000, true);
         testIndex.push_back(ffffCategory);
     }

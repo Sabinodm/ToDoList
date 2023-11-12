@@ -19,20 +19,24 @@ const std::string & Category::getName() {
     return categoryName;
 }
 
-void Category::addActivity() {
+void Category::addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata) {
     Activity newActivity = Activity();
-    newActivity.Activity::setName();
-    newActivity.Activity::setDescription();
-    newActivity.Activity::setDate();
+    newActivity.Activity::setName(chosenName);
+    newActivity.Activity::setDescription(chosenDescription);
+    newActivity.Activity::setDate(chosenDay, chosenMonth, chosenYear);
+    newActivity.Activity::setYesNOdata(chosenYesNOdata);
     category.push_back(newActivity);
 }
 
-void Category::removeActivity() {
-    std::cout << "Inserisci il numero dell'attività da rimuovere" << std::endl;
-    std::cout << "Elemento numero:";
-    int indexElement;
-    std::cin.exceptions(std::ios_base::failbit);
-    std::cin >> indexElement;
+void Category::addActivity(const std::string &chosenName, const std::string &chosenDescription, bool chosenYesNOdata) { //overload in caso di attività senza data
+    Activity newActivity = Activity();
+    newActivity.Activity::setName(chosenName);
+    newActivity.Activity::setDescription(chosenDescription);
+    newActivity.Activity::setYesNOdata(chosenYesNOdata);
+    category.push_back(newActivity);
+}
+
+void Category::removeActivity(int indexElement) {
     if (indexElement >= category.size() || indexElement < 0) {
         throw std::out_of_range("Indice non valido");
     }
@@ -91,24 +95,4 @@ Date Category::getActivityDate(int indexElement) {
 
 bool Category::getActivityYesNOdata(int indexElement) {
     return category[indexElement].Activity::getYesNOdata();
-}
-
-//overload per test
-
-void Category::addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata) {
-    Activity newActivity = Activity();
-    newActivity.Activity::setName(chosenName);
-    newActivity.Activity::setDescription(chosenDescription);
-    newActivity.Activity::setDate(chosenDay, chosenMonth, chosenYear);
-    newActivity.Activity::setYesNOdata(chosenYesNOdata);
-    category.push_back(newActivity);
-}
-
-void Category::removeActivity(int indexElement) {
-    if (indexElement >= category.size() || indexElement < 0) {
-        throw std::out_of_range("Indice non valido");
-    }
-    else {
-        category.erase(category.begin() + indexElement);
-    }
 }

@@ -14,8 +14,9 @@ public:
     ~Category() = default;
     const std::string & setName(const std::string & chosenName);
     const  std::string & getName();
-    void addActivity();
-    void removeActivity();
+    void addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata);
+    void addActivity(const std::string &chosenName, const std::string &chosenDescription, bool chosenYesNOdata); //overload in caso di attività senza data
+    void removeActivity(int indexElement);
     void printList();
     void clearList();
     void collectCategory();
@@ -27,10 +28,6 @@ public:
     std::string getActivityDescription(int indexElement);
     Date getActivityDate(int indexElement);
     bool getActivityYesNOdata(int indexElement);
-
-    //overload per test
-    void addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata);
-    void removeActivity(int indexElement);
 
 private:
     std::string categoryName;
