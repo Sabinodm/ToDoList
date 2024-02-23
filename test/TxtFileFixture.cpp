@@ -113,7 +113,7 @@ TEST_F(TxtFileFixture, chechFileTest){
     checkFile("readTestFile.txt", testReadIndex);
     ASSERT_EQ(testReadIndex.size(), 2);
     ASSERT_EQ(testReadIndex[0].getName(), "aaaa");
-    ASSERT_EQ(testReadIndex[0].getSizes(), 2);
+    ASSERT_EQ(testReadIndex[0].getSize(), 2);
     ASSERT_EQ(testReadIndex[0].getActivityName(0), "bbbb");
     ASSERT_EQ(testReadIndex[0].getActivityDescription(0), "cccc");
     ASSERT_EQ(testReadIndex[0].getActivityDate(0).getDay(), 1);
@@ -127,7 +127,7 @@ TEST_F(TxtFileFixture, chechFileTest){
     ASSERT_EQ(testReadIndex[0].getActivityDate(1).getYear(), 2009);
     ASSERT_EQ(testReadIndex[0].getActivityYesNOdata(1), true);
     ASSERT_EQ(testReadIndex[1].getName(), "ffff");
-    ASSERT_EQ(testReadIndex[1].getSizes(), 2);
+    ASSERT_EQ(testReadIndex[1].getSize(), 2);
     ASSERT_EQ(testReadIndex[1].getActivityName(0), "gggg");
     ASSERT_EQ(testReadIndex[1].getActivityDescription(0), "hhhh");
     ASSERT_EQ(testReadIndex[1].getActivityDate(0).getDay(), 1);

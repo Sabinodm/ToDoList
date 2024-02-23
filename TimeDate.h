@@ -19,7 +19,6 @@ private:
     bool isLeap(int year);
 public:
     Date();
-    ~Date();
     void setDate(int day, int month, int year);
     std::string getDate() const;
     int getDay() const;

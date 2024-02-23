@@ -26,7 +26,7 @@ protected:
 
 TEST_F(CategoryFixture, AddActivity) {
     category.addActivity("ffff", "gggg", 7, 8, 2003, true);
-    EXPECT_EQ(category.getSizes(),3) << "The size of the list is not correct";
+    EXPECT_EQ(category.getSize(), 3) << "The size of the list is not correct";
     EXPECT_EQ(category.getActivityName(2), "ffff") << "The name of the activity is not correct";
     EXPECT_EQ(category.getActivityDescription(2), "gggg") << "The description of the activity is not correct";
     EXPECT_EQ(category.getActivityDate(2).getDay(), 7) << "The day of the activity is not correct";
@@ -37,11 +37,11 @@ TEST_F(CategoryFixture, AddActivity) {
 
 TEST_F(CategoryFixture, RemoveActivity) {
     category.removeActivity(1);
-    EXPECT_EQ(category.getSizes(), 1);
+    EXPECT_EQ(category.getSize(), 1);
 }
 
 TEST_F(CategoryFixture, ClearList) {
     category.clearList();
-    EXPECT_EQ(category.getSizes(), 0);
+    EXPECT_EQ(category.getSize(), 0);
 }
 

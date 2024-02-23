@@ -45,7 +45,7 @@ void Category::removeActivity(int indexElement) {
     }
 }
 
-void Category::printList() const{
+void Category::printList() const{ //todo spostare in userInterface
     std::cout << "Categoria: " << categoryName << std::endl;
     if (category.empty()) {
         throw std::out_of_range("La categoria è vuota");
@@ -63,7 +63,9 @@ void Category::clearList() {
 }
 
 void Category::collectCategory() const{
-    writeCategory(categoryName);
+    std::ofstream fout("file.txt", std::ios_base::app);
+    fout << categoryName << std::endl;
+    fout.close();
     for (int i = 0; i < category.size(); i++) {
         category[i].collectActivity();
     }
@@ -75,9 +77,11 @@ void Category::readCategory(const std::string &name, const std::string &descript
     newCategory.category.push_back(newActivity);
 }
 
+//todo cerca attivita con relativo test
+
 //test
 
-size_t Category::getSizes() const{
+size_t Category::getSize() const{
     return  category.size();
 }
 

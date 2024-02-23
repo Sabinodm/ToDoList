@@ -9,8 +9,6 @@ Date::Date()
     clear();
 }
 
-Date::~Date(){}
-
 void Date::setDate(int day, int month, int year)
 {
     try

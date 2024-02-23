@@ -32,20 +32,6 @@ void checkFile(const std::string &file, std::vector<Category> &index) {
     }
 }
 
-void writeActivity(const std::string& name, const std::string& description, const Date& date, bool YesNOdate) {
-    std::ofstream fout("file.txt", std::ios_base::app);
-    fout << name << std::endl;
-    fout << description << std::endl;
-    fout << date.getDay() << std::endl << date.getMonth() << std::endl << date.getYear() << std::endl;
-    fout << YesNOdate << std::endl;
-    fout.close();
-}
-
-void writeCategory(const std::string& categoryName) {
-    std::ofstream fout("file.txt", std::ios_base::app);
-    fout << categoryName << std::endl;
-    fout.close();
-}
 void writeLabel() {
     std::ofstream fout("file.txt", std::ios_base::app);
     fout << "newCategoryLabel" <<std::endl;

@@ -9,8 +9,6 @@
 #include "Category.h"
 
 void checkFile(const std::string &file, std::vector<Category> &index);
-void writeActivity (const std::string& name, const std::string& description, const Date& date, bool YesNOdate);
-void writeCategory(const std::string& name);
 void readFile(std::ifstream &fin, std::vector<Category> &index);
 void saveFile(std::vector<Category> &index, const std::string &file);
 void writeLabel();

@@ -43,7 +43,13 @@ void Activity::printActivity() const{
 }
 
 void Activity::collectActivity() const {
-    writeActivity(name, description, date, YesNOdata);
+    std::ofstream fout("file.txt", std::ios_base::app);
+    fout << name << std::endl;
+    fout << description << std::endl;
+    fout << date.getDay() << std::endl << date.getMonth() << std::endl << date.getYear() << std::endl;
+    fout << YesNOdata << std::endl;
+    fout.close();
+
 }
 
 void Activity::readActivity(const std::string &readName, const std::string &readDescription, int readDay, int readMonth, int readYear, bool readYesNOdate) {

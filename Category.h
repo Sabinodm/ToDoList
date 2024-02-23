@@ -23,7 +23,7 @@ public:
     void readCategory(const std::string &name, const std::string &description, int day, int month, int year, bool yesNOdate, Category &newCategory);
 
     //test
-    size_t getSizes() const;
+    size_t getSize() const;
     std::string getActivityName(int indexElement) const;
     std::string getActivityDescription(int indexElement) const;
     Date getActivityDate(int indexElement) const;
