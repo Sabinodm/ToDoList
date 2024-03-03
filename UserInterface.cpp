@@ -2,8 +2,10 @@
 // Created by sabinodm on 11/11/23.
 //
 #include "UserInterface.h"
+#include "Category.h"
 #include <iostream>
 #include <limits>
+#include "Activity.h"
 
 int removeActivityInterface(){
     std::cout << "Inserisci il numero dell'attività da rimuovere" << std::endl;
@@ -73,5 +75,30 @@ int activitySetYearInterface() {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return 1990;
+    }
+}
+
+void printListInterface(const Category &indexOfCategory){
+    std::cout << "Categoria: " << indexOfCategory.getName() << std::endl;
+
+    std::vector<Activity> categoryVector = indexOfCategory.getVector();
+
+    if (categoryVector.empty()) {
+        throw std::out_of_range("La categoria è vuota");
+    }
+    else {
+        for (int i = 0; i < categoryVector.size(); i++) {
+            std::cout << i << " ― ― " << std::endl;
+            std::cout << "Attività: " << categoryVector[i].Activity::getName() << std::endl;
+            std::cout << "Descrizione: " << categoryVector[i].Activity::getDescription() << std::endl;
+            if (!categoryVector[i].Activity::getYesNOdata()) {
+                std::cout << "Data di scadenza: Nessuna data inserita" << std::endl;
+            }
+            else {
+                std::cout << "Data di scadenza: " << categoryVector[i].Activity::getDate().getDate() << std::endl;
+            }
+
+
+        }
     }
 }

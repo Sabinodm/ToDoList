@@ -31,17 +31,6 @@ void Activity::setYesNOdata(bool chosenYesNOdata) {
     this->YesNOdata = chosenYesNOdata;
 }
 
-void Activity::printActivity() const{
-    std::cout << "Attività: " << name << std::endl;
-    std::cout << "Descrizione: " << description << std::endl;
-    if (!YesNOdata) {
-        std::cout << "Data di scadenza: Nessuna data inserita" << std::endl;
-    }
-    else {
-        std::cout << "Data di scadenza: " << date.getDate() << std::endl;
-    }
-}
-
 void Activity::collectActivity() const {
     std::ofstream fout("file.txt", std::ios_base::app);
     fout << name << std::endl;

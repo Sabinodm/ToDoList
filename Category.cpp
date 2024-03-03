@@ -45,19 +45,6 @@ void Category::removeActivity(int indexElement) {
     }
 }
 
-void Category::printList() const{ //todo spostare in userInterface
-    std::cout << "Categoria: " << categoryName << std::endl;
-    if (category.empty()) {
-        throw std::out_of_range("La categoria è vuota");
-    }
-    else {
-        for (int i = 0; i < category.size(); i++) {
-            std::cout << i << " ― ― " << std::endl;
-            category[i].Activity::printActivity();
-        }
-    }
-}
-
 void Category::clearList() {
     category.clear();
 }
@@ -84,12 +71,23 @@ int Category::searchActivity(const std::string &searchedName) const {
         if (result) {
             std::cout << "Categoria: " << categoryName << std::endl;
             std::cout << i << " ― ― " << std::endl;
-            category[i].Activity::printActivity();
+            std::cout << "Nome: " << category[i].Activity::getName() << std::endl;
+            std::cout << "Descrizione: " << category[i].Activity::getDescription() << std::endl;
+            if (category[i].Activity::getYesNOdata()) {
+                std::cout << "Data di scadenza: " << category[i].Activity::getDate().getDay() << "/" << category[i].Activity::getDate().getMonth() << "/" << category[i].Activity::getDate().getYear() << std::endl;
+            }
+            else {
+                std::cout << "Nessuna data di scadenza" << std::endl;
+            }
             std::cout << std::endl;
             counter++;
         }
     }
     return counter;
+}
+
+std::vector<Activity> Category::getVector() const{
+    return category;
 }
 
 //test

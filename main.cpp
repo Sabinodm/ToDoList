@@ -117,7 +117,7 @@ int main() {
             case 3: //stampa categoria
                 try {
                     int categoryNumber = listSelector(indexOfCategory);
-                    indexOfCategory[categoryNumber].printList();
+                    printListInterface(indexOfCategory[categoryNumber]);
                 }catch (std::out_of_range &e ){
                     std::cout << e.what() << std::endl;
                 }catch (std::ios_base::failure &fail) {
@@ -130,8 +130,7 @@ int main() {
             case 4: //rimozione attività da una categoria
                 try {
                     int categoryNumber = listSelector(indexOfCategory);
-                    indexOfCategory[categoryNumber].printList();
-
+                    printListInterface(indexOfCategory[categoryNumber]);
                     int indexElement = removeActivityInterface();
 
                     indexOfCategory[categoryNumber].removeActivity(indexElement);

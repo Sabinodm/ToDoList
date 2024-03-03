@@ -17,11 +17,11 @@ public:
     void addActivity(const std::string &chosenName, const std::string &chosenDescription, int chosenDay, int chosenMonth, int chosenYear, bool chosenYesNOdata);
     void addActivity(const std::string &chosenName, const std::string &chosenDescription, bool chosenYesNOdata); //overload in caso di attività senza data
     void removeActivity(int indexElement);
-    void printList() const;
     void clearList();
     void collectCategory() const;
     void readCategory(const std::string &name, const std::string &description, int day, int month, int year, bool yesNOdate, Category &newCategory);
     int searchActivity(const std::string &searchedName) const;
+    std::vector<Activity> getVector() const;
 
     //test
     size_t getSize() const;
