@@ -77,7 +77,20 @@ void Category::readCategory(const std::string &name, const std::string &descript
     newCategory.category.push_back(newActivity);
 }
 
-//todo cerca attivita con relativo test
+int Category::searchActivity(const std::string &searchedName) const {
+    int counter = 0;
+    for (int i = 0; i < category.size(); i++) {
+        bool result = category[i].Activity::getName() == searchedName;
+        if (result) {
+            std::cout << "Categoria: " << categoryName << std::endl;
+            std::cout << i << " ― ― " << std::endl;
+            category[i].Activity::printActivity();
+            std::cout << std::endl;
+            counter++;
+        }
+    }
+    return counter;
+}
 
 //test
 

@@ -45,3 +45,9 @@ TEST_F(CategoryFixture, ClearList) {
     EXPECT_EQ(category.getSize(), 0);
 }
 
+
+TEST_F(CategoryFixture, SearchActivity) {
+    EXPECT_EQ(category.searchActivity("bbbb"), 1);
+    EXPECT_EQ(category.searchActivity("dddd"), 1);
+    EXPECT_EQ(category.searchActivity("llll"), 0);
+}

@@ -49,6 +49,7 @@ int main() {
         std::cout << "5-- Svuotare una categoria " << std::endl;
         std::cout << "6-- Eliminare una categoria ed il suo contenuto " << std::endl;
         std::cout << "7-- Eliminare tutte le categorie ed il loro contenuto " << std::endl;
+        std::cout << "8-- Cerca un'attività " << std::endl;
         try {
             std::cin.exceptions(std::ios_base::failbit);
             std::cin >> a;
@@ -59,6 +60,7 @@ int main() {
             a = -1; //case default
         }
         std::string categoryName;
+        std::string searchName;
 
         switch (a) {
             case 0:
@@ -174,6 +176,24 @@ int main() {
             case 7: //eliminazione tutte le categorie
                 indexOfCategory.clear();
                 std::cout << "Tutte le categorie sono state eliminate" << std::endl;
+            break;
+
+            case 8: //cerca attività
+                try{
+                    std::cout << "Inserisci il nome dell'attività da cercare" << std::endl;
+                    std::cin >> searchName;
+                    int result = 0;
+                    for (int i = 0; i < indexOfCategory.size(); i++) {
+                        result = + indexOfCategory[i].searchActivity(searchName);
+                    }
+                    if (result == 0) {
+                        std::cout << "Nessuna attività trovata" << std::endl;
+                    }
+                }catch (std::ios_base::failure &fail) {
+                    std::cout << "Valore inserito non valido" << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
             break;
 
             default:

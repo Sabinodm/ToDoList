@@ -21,6 +21,7 @@ public:
     void clearList();
     void collectCategory() const;
     void readCategory(const std::string &name, const std::string &description, int day, int month, int year, bool yesNOdate, Category &newCategory);
+    int searchActivity(const std::string &searchedName) const;
 
     //test
     size_t getSize() const;
@@ -32,6 +33,8 @@ public:
 private:
     std::string categoryName;
     std::vector<Activity> category;
+
+
 };
 
 #endif //TODOLIST_CATEGORY_H
